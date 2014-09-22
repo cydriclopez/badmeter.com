@@ -50,7 +50,7 @@ PostgreSQL
 This project uses the PostgreSQL database. The folder
 myproject/badmeter/sql contains all pgsql code used in the project.
 Django ORM queries are used in the project but for saving to the
-database stored-procedre calls are used.
+database stored-procedure calls are used.
 
 The Cookie table keeps the voters session id's. The Topic table
 keeps the various topics created by the voters. The Vote table
@@ -97,7 +97,7 @@ Crontab
 -------
 Run 'crontab -e' and add the following lines:
 ::
-    # Run every midnight a pgsql stored procedre.
+    # Run every midnight a pgsql stored procedure.
     0 0 * * * psql -d database_name -U username -c "select purge_scan()"
 
 But for this to work you have to create a PostgreSQL password file
