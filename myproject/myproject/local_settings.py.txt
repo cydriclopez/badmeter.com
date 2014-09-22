@@ -1,0 +1,11 @@
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = '**************************************************'
+
+# Recaptcha settings from your google recaptcha account
+PUBLIC_KEY =  '****************************************'
+PRIVATE_KEY = '****************************************'
+
+# db login & password
+DB_USER = '******'
+DB_PASSWORD = '**********'

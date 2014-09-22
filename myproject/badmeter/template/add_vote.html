@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+{% block content %}
+<div class="top-ad">
+<div class="top-ad-googlead">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- leaderboard728x90 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-9877104139247454"
+     data-ad-slot="9352022729"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+</div>
+<div class="side-ad1">
+<div class="side-ad1-googlead">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- wideskyscraper160x600_1 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:160px;height:600px"
+     data-ad-client="ca-pub-9877104139247454"
+     data-ad-slot="7735688726"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+{% if allow_vote %}
+    {% if topic_votes|length > 7 %}
+        <div class="side-ad1-googlead">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- wideskyscraper160x600_2 -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:160px;height:600px"
+             data-ad-client="ca-pub-9877104139247454"
+             data-ad-slot="5840153129"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        </div>
+    {% endif %}
+    {% if topic_votes|length > 15 %}
+        <div class="side-ad1-googlead">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- wideskyscraper160x600_4 -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:160px;height:600px"
+             data-ad-client="ca-pub-9877104139247454"
+             data-ad-slot="6126027927"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        </div>
+    {% endif %}
+{% else %}
+    {% if topic_votes|length > 14 %}
+        <div class="side-ad1-googlead">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- wideskyscraper160x600_2 -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:160px;height:600px"
+             data-ad-client="ca-pub-9877104139247454"
+             data-ad-slot="5840153129"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        </div>
+    {% endif %}
+    {% if topic_votes|length > 22 %}
+        <div class="side-ad1-googlead">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- wideskyscraper160x600_4 -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:160px;height:600px"
+             data-ad-client="ca-pub-9877104139247454"
+             data-ad-slot="6126027927"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        </div>
+    {% endif %}
+{% endif %}
+</div>
+<article class="main-content">
+<p>Topic: <strong>{{ form.initial.topic_title }}</strong></p>
+<hr>
+<section class="welcome">
+<div class="welcome_left">
+<h1>Badmeter data:</h1>
+<br>
+{% include "stats_table.html" %}
+</div>
+<div class="welcome_right">
+{% include "google_gauge.html" %}
+</div>
+</section>
+{% if allow_vote %}
+<section class="add_vote_section">
+<hr>
+<h1>Add Vote:</h1>
+<br>
+<p>
+Your vote and comment are anonymous.
+Your vote is subject to vote throttling and topic purging.
+What matters most to us is your positive or negative vote on a topic that interests you.
+Your vote moves the badmeter gauge positive or negative.
+</p>
+<br>
+<form action="" class="add_vote_form" method="post">{% csrf_token %}
+<p class="add_vote_comment_label">Your Comment (100 Characters):</p>
+<textarea class="add_vote_comment_text" name="comment" rows="2" cols="50" maxlength="100">{{ form.initial.comment }}</textarea>
+<input type="hidden" value="" name="vote" id="vote">
+<input type="hidden" value="{{ form.initial.topic_slug }}" name="topic_slug" id="topic_slug">
+<p class="add_vote_recaptcha_label"><br>reCAPTCHA: (Required entry)</p>
+<div class="add_vote_recaptcha">
+    <script type="text/javascript"
+       src="http://www.google.com/recaptcha/api/challenge?k={{ form.initial.recaptcha_public_key }}">
+    </script>
+    <noscript>
+       <iframe src="http://www.google.com/recaptcha/api/noscript?k={{ form.initial.recaptcha_public_key }}"
+           height="300" width="500" frameborder="0"></iframe><br>
+       <textarea name="recaptcha_challenge_field" rows="3" cols="40">
+       </textarea>
+       <input type="hidden" name="recaptcha_response_field"
+           value="manual_challenge">
+    </noscript>
+</div>
+<p>
+<br>
+<button type="button" class="vote_negative"> Vote Negative </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<button type="button" class="vote_cancel"> Cancel </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<button type="button" class="vote_positive"> Vote Positive </button>
+</p>
+</form>
+</section>
+{% endif %}
+<section class="other_votes">
+<hr>
+<h1>Votes(100):</h1>
+<br>
+<table class="topic_votes">
+{% for id, counted, cookie_string, comment, vote, date_created, votes_negative, votes_positive in topic_votes %}
+<tr class="topic_votes_row1">
+<td class="topic_votes_row1_except">&nbsp;</td>
+{% ifequal counted 'true' %}
+    {% ifequal vote 'true' %}
+    <td class="topic_votes_row1_except"><img src="{% static 'img/add-icon.png' %}"></td>
+    {% else %}
+    <td class="topic_votes_row1_except"><img src="{% static 'img/Math-minus-icon.png' %}"></td>
+    {% endifequal %}
+{% else %}
+    <td class="topic_votes_row1_except"><img src="{% static 'img/Button-Blank-Gray-icon.png' %}"></td>
+{% endifequal %}
+<td class="topic_votes_row1_except">&nbsp;</td>
+<td>{{ forloop.counter }}.&nbsp;
+{% ifequal cookie_string form.initial.cookie_string %}
+    <strong>{{ cookie_string }}</strong>
+{% else %}
+    {{ cookie_string }}
+{% endifequal %}
+&nbsp;(-{{ votes_negative }}/+{{ votes_positive }})</td>
+<td>&nbsp;</td>
+<td>{{ date_created }}</td>
+</tr>
+<tr>
+<td colspan="3">&nbsp;</td>
+<td colspan="3">{{ comment }}</td>
+</tr>
+<tr>
+<td colspan="6">&nbsp;</td>
+</tr>
+{% endfor %}
+</table>
+<hr>
+<br><br>
+</section>
+</article>
+{% endblock content %}

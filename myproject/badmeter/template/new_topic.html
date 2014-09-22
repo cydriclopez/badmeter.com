@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+{% block content %}
+<div class="top-ad">
+<div class="top-ad-googlead">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- leaderboard728x90 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-9877104139247454"
+     data-ad-slot="9352022729"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+</div>
+<div class="side-ad1">
+<div class="side-ad1-googlead">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- wideskyscraper160x600_1 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:160px;height:600px"
+     data-ad-client="ca-pub-9877104139247454"
+     data-ad-slot="7735688726"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+</div>
+<article class="main-content">
+<p>Topic: <strong>{{ form.cleaned_data.topic_title }}</strong></p>
+<hr>
+<section class="welcome">
+<div class="welcome_left">
+<h1>Badmeter statistics:</h1>
+<br>
+{% include "stats_table.html" %}
+</div>
+<div class="welcome_right">
+{% include "google_gauge.html" %}
+</div>
+</section>
+<section class="new_topic">
+<hr>
+<h1>New Topic:</h1>
+<br>
+<p>
+Below Topic Name and Topic ID are both read-only fields.
+To change the Topic Name below <u>enter a new Topic Name in the Topic Search above</u> then press enter.
+Topic ID is determined by the server using the Topic Name.
+If Topic Name below is what you want then enter the reCAPTCHA string below then click "Add Topic".
+</p>
+<br>
+<form class="new_topic_form" method="post" action="">{% csrf_token %}
+<label for="topic_name" class="topic_name_label">Topic Name (read-only):<br></label>
+<input type="text" value="{{ form.initial.topic_title }}" name="topic_title" class="topic_title" value="" size="50" maxlength="60" readonly><br><br>
+<label for="topic_slug" class="topic_slug_label">Topic ID (read-only):<br></label>
+<input type="text" value="{{ form.initial.topic_slug }}" name="topic_slug" class="topic_slug" value="" size="50" maxlength="60" readonly><br>
+<p class="new_topic_recaptcha_label"><br>reCAPTCHA: (Required entry)</p>
+<div class="new_topic_recaptcha">
+    <script type="text/javascript"
+       src="http://www.google.com/recaptcha/api/challenge?k={{ form.initial.public_key }}">
+    </script>
+    <noscript>
+       <iframe src="http://www.google.com/recaptcha/api/noscript?k={{ form.initial.public_key }}"
+           height="300" width="500" frameborder="0"></iframe><br>
+       <textarea name="recaptcha_challenge_field" rows="3" cols="40">
+       </textarea>
+       <input type="hidden" name="recaptcha_response_field"
+           value="manual_challenge">
+    </noscript>
+</div>
+<p>
+<br>
+<button type="submit" class="new_topic_submit_button"> Add Topic </button>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<button type="button" class="new_topic_cancel_button"> Cancel </button>
+</p>
+</form>
+<hr>
+<br>
+</section>
+</article>
+{% endblock content %}

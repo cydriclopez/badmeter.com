@@ -1,0 +1,12 @@
+<table class="stats">
+<tr><td class="rt_align">Your Cookie:&nbsp;</td><td colspan="3"><strong>{{ cookie_string }}</strong></td></tr>
+<tr><td class="rt_align">Cookie age:&nbsp;</td><td colspan="3">{{ cookie_ageindays_string }}</td></tr>
+<tr><td class="rt_align">Topic age:&nbsp;</td><td colspan="3">{{ topic_ageindays_string|safe }}</td></tr>
+<tr><td class="rt_align">Created:&nbsp;</td><td colspan="3">{{ topic_created }}</td></tr>
+<tr><td class="rt_align">Purging:&nbsp;</td><td colspan="3"><strong>{{ topic_purgedate }}</strong></td></tr>
+<tr><td class="rt_align">Your votes:&nbsp;</td><td class="narrow_col1">{{ cookie_total_votes }}</td><td class="rt_align narrow_col2">Total votes:&nbsp;</td><td>{{ topic_total_votes }}</td></tr>
+<tr><td class="rt_align">(-):&nbsp;</td><td class="narrow_col1">{{ cookie_votes_negative }}</td><td class="rt_align narrow_col2">(-):&nbsp;</td><td>{{ topic_votes_negative }}</td></tr>
+<tr><td class="rt_align">(+):&nbsp;</td><td class="narrow_col1">{{ cookie_votes_positive }}</td><td class="rt_align narrow_col2">(+):&nbsp;</td><td>{{ topic_votes_positive }}</td></tr>
+<tr><td class="rt_align">Badmeter:&nbsp;</td><td colspan="3"><p class="badmeter_number"><strong>{{ topic_badmeter|stringformat:"2d" }}</strong>%</p></td></tr>
+<tr><td class="rt_align">Message:&nbsp;</td><td colspan="3"><p class="status_message"><strong>{{ status_message }}</strong></p></td></tr>
+</table>

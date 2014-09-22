@@ -1,0 +1,397 @@
+/*** reset browser styles ***/
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr,
+acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp,small, strike,
+strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1.2;
+    background-color: #696969;
+}
+ol {
+    padding-left: 1.4em;
+    list-style: decimal;
+}
+ul {
+    padding-left: 1.4em;
+    list-style: square;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/*** end reset browser styles ***/
+*, body {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: "Verdana", "Geneva", "sans-serif" !important;
+    font-size: 15px;
+}
+.pageWrapper {
+    width: 960px;
+    margin: 0 auto;
+    background-color: #2A2A2A;
+    overflow: auto;
+/*
+    border: thin;
+    border-color: red;
+    border-style: dashed;
+*/
+}
+.topheader {
+    z-index: 99999;
+    position: fixed;
+    top: 0;
+    left: inherit;
+    width: inherit;
+}
+.topheaderline0 {
+    background-color: #000099;
+    height: 40px;
+}
+.topheaderline0 img {
+    position: absolute;
+    left: 10px;
+    top: 6px;
+    width: 229px;
+    height: 30px;
+    border: 0;
+}
+.topheaderline0 p {
+    position: absolute;
+    color: white;
+    left: 390px;
+    top: 17px;
+}
+.topheaderline1 {
+    background-color: #73BAD8;
+    height: 31px;
+}
+.topheaderline1 label {
+    position: absolute;
+    left: 10px;
+    top: 47px;
+    color: navy;
+}
+.topheaderline1 input[type=text] {
+    position: absolute;
+    left: 155px;
+    top: 44px;
+    height: 22px;
+    width: 300px;
+}
+.topheaderline1 .menu {
+    position: absolute;
+    left: 450px;
+    top: 47px;
+    list-style: none;
+    text-align: center;
+}
+.topheaderline1 .menu li {
+    display: inline;
+}
+.topheaderline1 .menu li:before {
+    content: "\2666\00a0";
+}
+.topheaderline1 .menu a:link {
+    color: navy;
+    text-decoration:none;
+}
+.top-ad {
+    padding-top: 87px;
+    padding-bottom: 15px;
+}
+/*
+.top-ad img {
+    display: block;
+    margin: 0 auto;
+    width: 720px;
+    height: 90px;
+}
+*/
+.top-ad-googlead {
+    display: block;
+    width: 728px;
+    height: 90px;
+    border: thin;
+    margin: 0 auto;
+}
+.side-ad1 {
+    float: right;
+    background-color: inherit;
+    width: 200px;
+}
+/*
+.side-ad1 img {
+    padding-top: 40px;
+    display: block;
+    margin: 0 auto;
+    width: 160px;
+    height: 600px;
+}
+*/
+.side-ad1-googlead {
+/*
+    margin-top: 40px;
+*/
+    display: block;
+    width: 160px;
+    height: 600px;
+    margin: 40px auto;
+}
+.main-content {
+    float: left;
+    width: 760px;
+    padding: 30px;
+    border-top-right-radius: 50px;
+    border-style: solid;
+    border-width: 10px;
+    border-color: #218AB9;
+    background-color: white;
+    overflow: hidden;
+}
+hr {
+    height: 3px;
+    border: none;
+    color: gray;
+    background-color: gray;
+    clear: both;
+}
+.welcome .welcome_left {
+    float: left;
+    height: 250px;
+    width: 390px;
+}
+.welcome .welcome_right {
+    position: relative;
+    float: left;
+    height: 250px;
+    width: 280px;
+}
+#neutral_50 {
+    z-index: 1;
+    position: absolute;
+    top: 0px;
+    left: 90px;
+}
+#label_bad {
+    z-index: 1;
+    position: absolute;
+    top: 215px;
+    left: 30px;
+}
+#label_good {
+    z-index: 1;
+    position: absolute;
+    top: 215px;
+    left: 210px;
+}
+#google_gauge {
+    z-index: 0;
+    position: absolute;
+    top: 10px;
+    left: 15px;
+}
+.paragraph {
+    float: left;
+    width: 650px;
+    margin-bottom: 7px;
+    overflow: auto;
+}
+.paragraph_number {
+    float: left;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-left: 60px;
+}
+.paragraph_words {
+    float: right;
+    width: 500px;
+    padding-right: 20px;
+}
+.features {
+    clear: both;
+    overflow: auto;
+}
+.features_2nd {
+    background-color: SkyBlue;
+    border-radius: 20px;
+}
+.howitworks {
+    clear: both;
+    overflow: auto;
+}
+.howitworks_2nd {
+    background-color: SkyBlue;
+    border-radius: 20px;
+}
+.vote_throttling {
+    width: 521px;
+    height: 308px;
+    margin: 10px 0 10px 70px;
+    border: 5px solid red;
+    border-radius: 20px;
+}
+.topic_purging {
+    width: 548px;
+    height: 373px;
+    margin: 10px 0 10px 70px;
+    border: 5px solid red;
+    border-radius: 20px;
+}
+.about {
+    clear: both;
+    overflow: auto;
+/*  border: thin;
+    border-color: red;
+    border-style: dashed;*/
+}
+.about_def {
+    background-color: SkyBlue;
+    border-radius: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+/*** new_topic ****/
+.new_topic {
+    clear: both;
+    overflow: auto;
+}
+.new_topic_form {
+    margin-left: 60px;
+}
+.topic_title_label,
+.topic_slug_label,
+.new_topic_recaptcha_label,
+.topic_title,
+.topic_slug,
+.new_topic_recaptcha {
+    clear: both;
+}
+#topic_title {
+    font-size: 12px;
+}
+/*** add_vote ***/
+.stats td {
+    font-size: 12px;
+    border:0px;
+    border-collapse: collapse;
+}
+.rt_align {
+    text-align: right;
+}
+.narrow_col1 {
+    width: 50px;
+}
+.narrow_col2 {
+    width: 100px;
+}
+.add_vote_section {
+    position: relative;
+    top: 15px;
+    clear: both;
+    overflow: auto;
+}
+.add_vote_form {
+    margin-left: 60px;
+}
+.add_vote_comment_label,
+.add_vote_recaptcha_label,
+.add_vote_comment_text,
+.add_vote_recaptcha {
+    clear: both;
+}
+.ui-autocomplete-loading {
+    background: white url('/static/img/ui-anim_basic_16x16.gif') right center no-repeat;
+}
+.status_message {
+    width: 300px;
+    height: 65px;
+}
+.other_votes {
+    position: relative;
+    top: 20px;
+    clear: both;
+    overflow: auto;
+}
+.topic_votes td {
+    border:0px;
+    border-collapse: collapse;
+    text-align: left;
+    vertical-align: top;
+}
+.topic_votes_row1 {
+    background-color: LightGray;
+}
+.topic_votes_row1_except {
+    background-color: white;
+}
+.new_topic_submit_button,
+.new_topic_cancel_button,
+.vote_negative,
+.vote_positive,
+.vote_cancel {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius:6px;
+    color: #fff;
+    font-size: 20px;
+    text-decoration: none;
+    cursor: pointer;
+    border:none;
+}
+.vote_negative {
+    background-color: #C01212;
+/*
+    #DC3912;
+*/
+}
+.new_topic_submit_button,
+.vote_positive {
+    background-color: #109618;
+}
+.new_topic_cancel_button,
+.vote_cancel {
+    background-color: #4D4D4D;
+}
+.ui-dialog-content {
+    left: 20px;
+    top: 10px;
+}
+#features_section {
+    display: block;
+    position: relative;
+    top: 180px;
+    visibility: hidden;
+}
+#about_section,
+#howitworks_section {
+    display: block;
+    position: relative;
+    top: -70px;
+    visibility: hidden;
+}
+.wink_smiley {
+    height: 17px;
+    width : 20px;
+    border : 0;
+}
+.no_to_ie {
+    height: 25px;
+    width : 30px;
+    border : 0;
+}
+.badmeter_number {
+    font-size: 20px;
+}

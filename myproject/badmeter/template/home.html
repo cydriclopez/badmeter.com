@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+{% block content %}
+<a id="home_section"></a>
+<div class="top-ad">
+<div class="top-ad-googlead">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- leaderboard728x90 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-9877104139247454"
+     data-ad-slot="9352022729"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+</div>
+<div class="side-ad1">
+<div class="side-ad1-googlead">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- wideskyscraper160x600_1 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:160px;height:600px"
+     data-ad-client="ca-pub-9877104139247454"
+     data-ad-slot="7735688726"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+<div class="side-ad1-googlead">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- wideskyscraper160x600_2 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:160px;height:600px"
+     data-ad-client="ca-pub-9877104139247454"
+     data-ad-slot="5840153129"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+<div class="side-ad1-googlead">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- wideskyscraper160x600_4 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:160px;height:600px"
+     data-ad-client="ca-pub-9877104139247454"
+     data-ad-slot="6126027927"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+</div>
+<article class="main-content">
+<p>Topic: <strong>badmeter.com...where you can anonymously vote if it's bad or good!</strong></p>
+<hr>
+<section class="welcome">
+<div class="welcome_left">
+<h1>Welcome to the badmeter!</h1>
+<br>
+<p>
+This is the home of the badmeter which can help us anonymously rate anything and everything under the sun.
+You will notice that in this website there is absolutely **NO** link to a login & password entry.
+<br><br>Please read on and see how it works.
+<br><br>*** This website is still a work-in-progress. ***
+</p>
+</div>
+<div class="welcome_right">
+{% include "google_gauge.html" %}
+</div>
+</section>
+<a id="features_section"></a>
+<section class="features">
+<hr>
+<h1>Features:</h1>
+<br>
+<div class="paragraph">
+<p class="paragraph_number">&radic;</p>
+<p class="paragraph_words">
+Your identity remains absolutely anonymous, at least from our point of view.
+We could not care less about your IP address, personal identity, email address, or social media accounts.
+All we need is a <u>session cookie</u> stored in your computer. You can always delete this cookie.
+Vote throttling encourages users to keep their session cookie.
+</p>
+</div>
+<div class="paragraph features_2nd">
+<p class="paragraph_number">&radic;</p>
+<p class="paragraph_words">
+Vote throttling: You, with your unique session cookie, are allowed 1 vote per day per topic.
+Your first 2 votes on a topic will not be counted. On your <u>3rd vote</u>
+all your votes on just this topic will start to count immediately, including the 2 previous votes.
+If you delete and obtain a <u>new session cookie</u>, you will have to go through this
+requirement again for the topics you have already voted on.
+You can vote on many topics per day.
+</p>
+</div>
+<div class="paragraph">
+<p class="paragraph_number">&radic;</p>
+<p class="paragraph_words">
+Topic purging: At anytime when a topic has less than <u>{{ vote_quota }} votes</u> within the past <u>{{ interval_days }} days</u> then it is deleted.
+It does not matter how long the topic has been around.
+When it becomes a stale topic, with no one interested in it, then it is deleted.
+</p>
+</div>
+</section>
+<a id="howitworks_section"></a>
+<section class="howitworks">
+<hr>
+<h1>How it works:</h1>
+<br>
+<div class="paragraph">
+<p class="paragraph_number">1</p>
+<p class="paragraph_words">
+On "Search/New Topic:" above enter or search a topic. If your topic already exists, choose it from the pull-down menu.
+If your topic is new you can <u>create it by entering</u> up to 60 characters of it. Then press enter.
+</p>
+</div>
+<div class="paragraph howitworks_2nd">
+<p class="paragraph_number">2</p>
+<p class="paragraph_words">
+For a new topic you will be prompted for a reCAPTCHA entry to create the topic.
+If the topic already exists you will be shown the badmeter on the topic.
+It will also show you the badmeter data on the topic such as topic age in days and
+the number of positive and negative votes on the topic. You can <u>cut-and-paste the URL</u>
+on this <u>topic-page</u> into your email or click on the share buttons on the
+left to <u>campaign for votes</u> on the topic.
+</p>
+</div>
+<div class="paragraph">
+<p class="paragraph_number">3</p>
+<p class="paragraph_words">
+In the "Add Vote" form you can enter your 100-character comment. ReCaptcha is a required entry.
+To submit click "Vote Positive", "Vote Negative"
+or "Cancel". Your vote will be subject to Vote Throttling.
+<u>Your vote moves</u> the badmeter gauge positive or negative.
+</p>
+</div>
+<h1>Topic purging:</h1>
+<br>
+<p>
+Topics with less than {{ vote_quota }} votes in the past {{ interval_days }} days will be deleted from the server.
+This "{{ vote_quota }} votes in {{ interval_days }} days" parameter may change <u>without notice</u>.
+Aside from the badmeter data on the topic, no warning will be issued prior to purging the topic.
+It does not matter how long the topic has been around.
+When it becomes a stale topic, with no one interested in it, then it is deleted.
+The following illustrates topic purging.
+</p>
+<img class="topic_purging" src="{% static 'img/topic_purging.png' %}" alt="">
+</section>
+<a id="about_section"></a>
+<section class="about">
+<hr>
+<h1>About:</h1>
+<br>
+<p>
+There is a dearth of websites that allow anonymous comments. The ideal situation is that
+there should be a place in the internet where <u>anyone can say anything about anyone or anything</u>,
+with no holds barred but subject to constraints of server storage and bandwidth.
+This site is a humble simplistic attempt at creating such a place.
+<br>
+</p>
+<br>
+<p class="about_def">
+The word Bad can range in meaning from just plain bad, as in NOT good or terrible, to cool "bad", as in good actually.
+Here in this website we try to rate where in this range a particular topic is,
+based on the number of negative and positive votes. <u>Hence the name badmeter.</u>
+This badmeter should be taken at the least  with humor or at the most "with a grain of salt."
+<img class="wink_smiley" src="{% static 'img/11949864711624136689smiley117.svg.thumb.png' %}" alt="">
+We hope to see you here often.
+</p>
+<p>
+<br>
+A topic is important if:
+</p>
+<ul>
+  <li>More than one person deems it important.</li>
+  <li>Several people are willing to comment on it.</li>
+  <li>It is controversial with pros & cons.</li>
+  <li>Discussion on the topic can last a long time.</li>
+</ul>
+<p>
+<br>
+There is hardly a topic without pros & cons. We hope <u>badmeter.com</u> becomes the venue
+for expressing your views on a certain topic that interests you.
+</p>
+</section>
+<a id="contact_section"></a>
+<section class="contact">
+<hr>
+<h1>Contact:</h1>
+<br>
+<p>
+We need your input. For public comments you can create/select a "badmeter.com" topic and
+leave <u>awesome nice positive</u> comments there. As usual your votes/comments will be subject
+to vote throttling and topic purging.<br><!-- br>
+For a private message fill out the following <input type="button" value="form" -->
+</p>
+</section>
+<section class="credits">
+<hr>
+<h1>Credits:</h1>
+<br>
+<p>Software tools used in this website:</p><br>
+<p class="about_def">GNU/Linux, Fedora, CentOS, Ubuntu, Python, Django, Apache, nginx, mod_wsgi, PostgreSQL, jQuery, jQueryUI,
+Bluefish, Geany, Shutter, Mercurial, Grsync, Firefox, LibreOffice Calc & Draw, and Google Chrome, reCAPTCHA & Charts.
+</p><br>
+<p><strong>No non-free software tool was ever exploited in the making of this website.</strong>
+<img class="no_to_ie" src="{% static 'img/no_to_ie.jpg' %}" alt=""></p>
+<hr>
+<br>
+</section>
+</article>
+{% endblock content %}

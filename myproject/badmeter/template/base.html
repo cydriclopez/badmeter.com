@@ -1,0 +1,85 @@
+{% load static from staticfiles %}
+<!doctype html>
+<html>
+<head>
+<title>Badmeter.com: {{ form.initial.topic_title }}</title>
+<meta name="robots" content="index, nofollow, noimageindex">
+<meta name="keywords" content="anonymous, vote, voting, bad, meter">
+<meta name="description" content="anonymous vote if something is bad or good">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
+<script src="https://www.google.com/jsapi"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/themes/start/jquery-ui.min.css" />
+<link rel="stylesheet" href="{% static 'css/home.css' %}?v=1" />
+</head>
+<body>
+<div class="pageWrapper">
+<header class="topheader">
+<div class="topheaderline0">
+<a href="/index#home_section"><img src="{% static 'img/badmeter_logo_blue.png' %}" alt="BADmeter.com"></a>
+<p>...where you can anonymously vote if something is bad or good!</p>
+</div>
+<div class="topheaderline1">
+<form id="topic_title_form" method="post" action="/topic/">{% csrf_token %}
+<label for="topic_title">Search/New Topic:</label>
+<input type="text" name="topic_title" id="topic_title" maxlength="60">
+</form>
+<ul class="menu">
+<li><a href="/index#home_section">Home</a></li>
+<li><a href="/index#features_section">Features</a></li>
+<li><a href="/index#howitworks_section">How-it-Works</a></li>
+<li><a href="/index#about_section">About</a></li>
+<li><a href="/index#contact_section">Contact</a></li>
+</ul>
+</div>
+</header>
+<!--
+bad function:
+badmeter = 50 + Math.floor((vote_difference / ((vote_sum == 0) ? 1 : vote_sum)) * 50);
+-->
+{% block content %}
+{% endblock content %}
+{% if messages %}
+<ul class="messages">
+{% for message in messages %}
+<li>{{ message|striptags }}</li>
+{% endfor %}
+</ul>
+{% endif %}
+<!-- AddToAny BEGIN -->
+<div class="a2a_kit a2a_kit_size_32 a2a_floating_style a2a_vertical_style" style="margin-left:-70px; top:205px;">
+<a class="a2a_dd" href="http://www.addtoany.com/share_save"></a>
+<a class="a2a_button_facebook"></a>
+<a class="a2a_button_twitter"></a>
+<a class="a2a_button_google_plus"></a>
+<a class="a2a_button_google_gmail"></a>
+<a class="a2a_button_yahoo_mail"></a>
+<a class="a2a_button_linkedin"></a>
+</div>
+<script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
+<!-- AddToAny END -->
+</div>
+<script type='text/javascript'>
+google.load('visualization', '1', {packages:['gauge']});
+google.setOnLoadCallback(drawChart);
+function drawChart(){
+    var data = google.visualization.arrayToDataTable([
+        ['Label', 'Value'],
+        ['badmeter', {{ topic_badmeter }}]
+    ]);
+    var options = {
+        min: 0, max: 100,
+        width: 530, height: 250,
+        redFrom: 0, redTo: 25,
+        greenFrom: 75, greenTo: 100,
+        minorTicks: 5
+    };
+    var chart = new google.visualization.Gauge(document.getElementById('google_gauge'));
+    chart.draw(data, options);
+}
+</script>
+</body>
+</html>
