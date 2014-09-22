@@ -32,7 +32,7 @@ About
 -----
 There is a dearth of websites that allow anonymous comments. The
 ideal situation is that there should be a place in the internet
-where anyone can say anything about anyone or anything, with no
+where **anyone can say anything about anyone or anything**, with no
 holds barred but subject to constraints of server storage and
 bandwidth. This site is a humble simplistic attempt at creating
 such a place.
@@ -69,6 +69,12 @@ procedures in pgsql.
 This was a good little trivial project that even presented a
 little drama in the form a cyclic dependency between the tables
 Vote and Cookie. A quick trip into the Django docs resolved it.
+
+Changing the **100-vote 30-day** requirement is as simple as
+changing badmeter/sql/get_configuration.sql accordingly and
+then reloading it in psql with the command:
+::
+    badmeter=> \i badmeter/sql/get_configuration.sql
 
 Testing
 -------
