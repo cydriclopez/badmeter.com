@@ -75,25 +75,25 @@ Testing
 The classmethod badmeter.tests.Test_main.setUpClass() uses
 the file myproject/badmeter/all.sql which is created using
 the command:
-|  cd myproject/badmeter
-|  cat sql/* > all.sql
+| cd myproject/badmeter
+| cat sql/* > all.sql
 
 all.sql is a compilation of all stored procedures used in
 the project and in the testing process.
 
 For testing to work make sure the login/password account
 into PostgreSQL has the role right to create a database:
-|  postgres=# ALTER USER username CREATEDB;
+| postgres=# ALTER USER username CREATEDB;
 
 Crontab
 -------
 Run 'crontab -e' and add the following lines:
-|  # Run every midnight a pgsql stored procedre.
-|  0 0 * * * psql -d database_name -U username -c "select purge_scan()"
+| # Run every midnight a pgsql stored procedre.
+| 0 0 * * * psql -d database_name -U username -c "select purge_scan()"
 
 But for this to work you have to create a PostgreSQL password file
 ~/.pgpass with the following contents:
-|  #hostname:port:database:username:password
-|  *:5432:database_name:username:password_text
+| #hostname:port:database:username:password
+| *:5432:database_name:username:password_text
 
 <http://www.badmeter.com>
