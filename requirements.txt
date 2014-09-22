@@ -1,0 +1,4 @@
+Django==1.7
+recaptcha-client==1.0.6
+psycopg2==2.5.1
+pudb==2014.1

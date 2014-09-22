@@ -3,6 +3,8 @@ Welcome to the badmeter!
 ============================
 **...where you can anonymously vote if something is bad or good!**
 
+Badmeter.com is a **Django** project.
+
 This is the home of the badmeter which can help us anonymously rate
 anything and everything under the sun. You will notice that in this
 website there is absolutely **NO** link to a login & password entry.
