@@ -105,10 +105,10 @@ into PostgreSQL has the role right to create a database:
 
 Crontab
 -------
-Run 'crontab -e' and add the following lines:
+Run 'crontab -e' and add the following lines to run `purge_scan() <https://github.com/cydriclopez/badmeter.com/blob/master/myproject/badmeter/sql/purge_scan.sql>`_ regularly:
 ::
     # Run every midnight a pgsql stored procedure.
-    0 0 * * * psql -d database_name -U username -c "select `purge_scan() <https://github.com/cydriclopez/badmeter.com/blob/master/myproject/badmeter/sql/purge_scan.sql>`_"
+    0 0 * * * psql -d database_name -U username -c "select purge_scan()"
 
 But for this to work you have to create a PostgreSQL password file
 ~/.pgpass with the following contents:
