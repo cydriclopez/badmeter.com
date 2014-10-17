@@ -78,18 +78,18 @@ procedures in pgsql.
 
 This was a good little trivial project that even presented a
 little drama in the form a cyclic dependency between the tables
-Vote and Cookie. A quick trip into the Django docs resolved it.
+`Vote and Cookie <https://github.com/cydriclopez/badmeter.com/blob/master/myproject/badmeter/models.py>`_. A quick trip into the Django docs resolved it.
 
 Changing the **100-vote 30-day** requirement is as simple as
-changing badmeter/sql/get_configuration.sql accordingly and
+changing `badmeter/sql/get_configuration.sql <https://github.com/cydriclopez/badmeter.com/blob/master/myproject/badmeter/sql/get_configuration.sql>`_ accordingly and
 then reloading it in psql with the command:
 ::
     badmeter=> \i badmeter/sql/get_configuration.sql
 
 Testing
 -------
-The classmethod badmeter.tests.Test_main.setUpClass() uses
-the file myproject/badmeter/all.sql which is created using
+The classmethod `badmeter.tests.Test_main.setUpClass() <https://github.com/cydriclopez/badmeter.com/blob/master/myproject/badmeter/tests.py>`_ uses
+the file `myproject/badmeter/all.sql <https://github.com/cydriclopez/badmeter.com/blob/master/myproject/badmeter/all.sql>`_ which is created using
 the command:
 ::
     cd myproject/badmeter
@@ -108,7 +108,7 @@ Crontab
 Run 'crontab -e' and add the following lines:
 ::
     # Run every midnight a pgsql stored procedure.
-    0 0 * * * psql -d database_name -U username -c "select purge_scan()"
+    0 0 * * * psql -d database_name -U username -c "select `purge_scan() <https://github.com/cydriclopez/badmeter.com/blob/master/myproject/badmeter/sql/purge_scan.sql>`_"
 
 But for this to work you have to create a PostgreSQL password file
 ~/.pgpass with the following contents:
