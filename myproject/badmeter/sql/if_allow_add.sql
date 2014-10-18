@@ -33,10 +33,8 @@ DECLARE
     t_now_end timestamp;
     t_badmeter_vote_count int;
 BEGIN
-    t_now := get_timestamp(p_now);
-    IF t_now IS NULL THEN
-        t_now := now();
-    END IF;
+    SELECT COALESCE(get_timestamp(p_now), now())
+        INTO t_now;
 
     t_now_start := date_trunc('day', t_now);
     t_now_end := t_now_start + interval '1 day';

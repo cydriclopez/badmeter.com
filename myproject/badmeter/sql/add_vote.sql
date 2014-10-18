@@ -67,10 +67,8 @@ BEGIN
         RETURN;
     END IF;
 
-    t_now := get_timestamp(p_now);
-    IF t_now IS NULL THEN
-        t_now := now();
-    END IF;
+    SELECT COALESCE(get_timestamp(p_now), now())
+        INTO t_now;
 
     -- Check if cookie exists.
     SELECT id

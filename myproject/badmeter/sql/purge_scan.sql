@@ -31,10 +31,8 @@ BEGIN
         INTO t_interval, t_quota
         FROM get_configuration();
 
-    t_now := get_timestamp(p_now);
-    IF t_now IS NULL THEN
-        t_now := now();
-    END IF;
+    SELECT COALESCE(get_timestamp(p_now), now())
+        INTO t_now;
 
     t_end := date_trunc('day', t_now);
     t_start := t_end - t_interval;

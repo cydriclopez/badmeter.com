@@ -30,10 +30,8 @@ DECLARE
     t_badmeter_cookie_id int;
     t_badmeter_topic_id int;
 BEGIN
-    t_now := get_timestamp(p_now);
-    IF t_now IS NULL THEN
-        t_now := now();
-    END IF;
+    SELECT COALESCE(get_timestamp(p_now), now())
+        INTO t_now;
 
     SELECT id
         INTO t_badmeter_topic_id

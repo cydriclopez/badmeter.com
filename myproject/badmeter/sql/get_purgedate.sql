@@ -38,10 +38,8 @@ BEGIN
         INTO t_interval, t_quota
         FROM get_configuration();
 
-    t_now := get_timestamp(p_now);
-    IF t_now IS NULL THEN
-        t_now := now();
-    END IF;
+    SELECT COALESCE(get_timestamp(p_now), now())
+        INTO t_now;
 
     -- First get the date the topic was created.
     SELECT id, date_created

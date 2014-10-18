@@ -30,10 +30,8 @@ DECLARE
     t_badmeter_cookie_id int;
     t_badmeter_topic_id int;
 BEGIN
-    t_now := get_timestamp(p_now);
-    IF t_now IS NULL THEN
-        t_now := now();
-    END IF;
+    SELECT COALESCE(get_timestamp(p_now), now())
+        INTO t_now;
 
     SELECT id
         INTO t_badmeter_topic_id
@@ -156,10 +154,8 @@ BEGIN
         RETURN;
     END IF;
 
-    t_now := get_timestamp(p_now);
-    IF t_now IS NULL THEN
-        t_now := now();
-    END IF;
+    SELECT COALESCE(get_timestamp(p_now), now())
+        INTO t_now;
 
     -- Check if cookie exists.
     SELECT id
@@ -334,8 +330,8 @@ DECLARE
     t_end timestamp;
     t_count int;
     t_oneday interval := interval '1 day';
-    t_interval interval;    -- := interval '10 days';
-    t_quota int;            -- := 100;
+    t_interval interval;
+    t_quota int;
 BEGIN
     -- Get application configuration from central location
     -- in get_configuration().
@@ -343,10 +339,8 @@ BEGIN
         INTO t_interval, t_quota
         FROM get_configuration();
 
-    t_now := get_timestamp(p_now);
-    IF t_now IS NULL THEN
-        t_now := now();
-    END IF;
+    SELECT COALESCE(get_timestamp(p_now), now())
+        INTO t_now;
 
     -- First get the date the topic was created.
     SELECT id, date_created
@@ -356,10 +350,10 @@ BEGIN
 
     t_start := date_trunc('day', t_start);
 
-    -- End date is 10 days from start date;
+    -- End date is interval_days from start date;
     t_end := t_start + t_interval;
 
-    -- If topic made it beyond first 10-day period tweak start & end dates.
+    -- If topic made it beyond first interval_days period tweak start & end dates.
     IF t_end < t_now THEN
         t_end := date_trunc('day', t_now);
         t_start := t_end - t_interval;
@@ -369,7 +363,7 @@ BEGIN
         RAISE NOTICE 't_start=%',t_start;
         RAISE NOTICE 't_end=%',t_end;
 
-        -- Count the number of votes during the 10-day period.
+        -- Count the number of votes during the interval_days period.
         SELECT count(*)
             INTO t_count
             FROM badmeter_vote
@@ -383,13 +377,11 @@ BEGIN
         -- If there are not enough votes exit & return the end date.
         EXIT WHEN (t_count < t_quota);
 
-        -- Try again on the next 10-day period.
+        -- Try again on the next interval_days period.
         t_end := t_end + t_oneday;
         t_start := t_end - t_interval;
     END LOOP;
 
-    -- ~ purge_date := substring(t_end::text for 10);
-    -- ~ purge_date := to_char(t_end, 'FMMonth DD, YYYY HH:MI:SS');
     purge_date := to_char(t_end, 'FMMon. DD, YYYY');
     vote_needed := (t_quota - t_count)::text;
 END;
@@ -507,10 +499,8 @@ DECLARE
     t_now_end timestamp;
     t_badmeter_vote_count int;
 BEGIN
-    t_now := get_timestamp(p_now);
-    IF t_now IS NULL THEN
-        t_now := now();
-    END IF;
+    SELECT COALESCE(get_timestamp(p_now), now())
+        INTO t_now;
 
     t_now_start := date_trunc('day', t_now);
     t_now_end := t_now_start + interval '1 day';
@@ -657,10 +647,8 @@ BEGIN
         INTO t_interval, t_quota
         FROM get_configuration();
 
-    t_now := get_timestamp(p_now);
-    IF t_now IS NULL THEN
-        t_now := now();
-    END IF;
+    SELECT COALESCE(get_timestamp(p_now), now())
+        INTO t_now;
 
     t_end := date_trunc('day', t_now);
     t_start := t_end - t_interval;
