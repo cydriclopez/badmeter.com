@@ -1,4 +1,6 @@
 
+-- This is the default add_topic() function called which in turn
+-- calls the overloading version with parameter now() as text.
 CREATE OR REPLACE FUNCTION add_topic(
     p_topic_title text,
     p_topic_slug text,      -- Will use Django's slugify() function.
@@ -17,6 +19,9 @@ END;
 $$ LANGUAGE plpgsql;
 
 
+-- Overload function add_topic() and add parameter "p_now".
+-- This is so we can feed function add_topic() with custom date for testing.
+-- Date in text format is safe even for external calls from Django.
 CREATE OR REPLACE FUNCTION add_topic(
     p_topic_title text,
     p_topic_slug text,
@@ -30,6 +35,8 @@ DECLARE
     t_badmeter_cookie_id int;
     t_badmeter_topic_id int;
 BEGIN
+    -- Function get_timestamp() returns null if p_now has 
+    -- format errors. In that case use now().
     SELECT COALESCE(get_timestamp(p_now), now())
         INTO t_now;
 
