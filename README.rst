@@ -58,7 +58,7 @@ here often.
 PostgreSQL
 ----------
 This project uses the PostgreSQL database. The folder
-'myproject/badmeter/sql <https://github.com/cydriclopez/badmeter.com/tree/master/myproject/badmeter/sql>`_ contains all pgsql code used in the project.
+`myproject/badmeter/sql <https://github.com/cydriclopez/badmeter.com/tree/master/myproject/badmeter/sql>`_ contains all pgsql code used in the project.
 Django ORM queries are used in the project but for saving to the
 database stored-procedure calls are used.
 
