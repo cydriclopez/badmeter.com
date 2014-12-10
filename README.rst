@@ -15,7 +15,7 @@ Here is a screen shot:
 
 Demo
 ----
-`badmeter.com <http://badmeter.com/>`_
+`badmeter.com <http://badmeter.cydric.webfactional.com/>`_
 
 Features
 --------

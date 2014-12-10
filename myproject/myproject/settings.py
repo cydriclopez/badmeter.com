@@ -36,6 +36,7 @@ TEMPLATE_DEBUG = True
 ALLOWED_HOSTS = [
     '.badmeter.com',
     '.badmeter.com.',
+    'badmeter.cydric.webfactional.com',
 ]
 
 # Application definition
